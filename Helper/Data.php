@@ -315,6 +315,7 @@ class Data extends AbstractData
      */
     public function optimizeImage($path)
     {
+        $path = $this->filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath() . $path;
         $result = [];
         if (!$this->fileExists($path)) {
             $result = [
