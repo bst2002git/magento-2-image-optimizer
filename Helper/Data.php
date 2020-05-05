@@ -144,6 +144,7 @@ class Data extends AbstractData
             }
             $files = $this->driverFile->readDirectoryRecursively($directory);
             foreach ($files as $file) {
+                $file = $this->filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath() . $file;
                 if (!$this->checkExcludeDirectory($file)) {
                     continue;
                 }
