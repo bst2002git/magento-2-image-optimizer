@@ -139,6 +139,7 @@ class Data extends AbstractData
         $pathValues = $collection->getColumnValues('path');
 
         foreach ($includeDirectories as $directory) {
+            $directory = $this->filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath() . $directory;
             if (!$this->checkDirectoryReadable($directory)) {
                 continue;
             }
@@ -316,7 +317,6 @@ class Data extends AbstractData
      */
     public function optimizeImage($path)
     {
-        $path = $this->filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath() . $path;
         $result = [];
         if (!$this->fileExists($path)) {
             $result = [
